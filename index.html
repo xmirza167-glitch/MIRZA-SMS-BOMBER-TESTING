@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ur">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080d18">
+<title>LemonLeek | SMS Lab</title>
+<style>
+:root{color-scheme:dark;--bg:#080d18;--panel:#101827;--border:#233044;--text:#e9f0fb;--muted:#8493aa;--mint:#71f0c1}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 system-ui,sans-serif}.shell{max-width:1150px;margin:auto;padding:25px 18px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px}.brand{display:flex;align-items:center;gap:12px}.logo{display:grid;place-items:center;width:44px;height:44px;border-radius:13px;background:var(--mint);color:#071a14;font-weight:900}.eyebrow{color:#8292a9;font-size:10px;letter-spacing:1.8px;font-weight:800}h1{font-size:clamp(24px,4vw,34px);margin:5px 0}.pill{padding:7px 10px;border-radius:99px;border:1px solid #285b4c;color:var(--mint);background:#102820;font-size:10px;letter-spacing:1px;font-weight:800}.notice{border:1px solid #294c48;background:#10251f;padding:14px 16px;border-radius:12px;margin-bottom:18px;color:#b6c9c8}.notice b{color:var(--mint)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}.stat,.panel{border:1px solid var(--border);border-radius:15px;background:var(--panel);padding:18px}.stat span{display:block;color:var(--muted);font-size:10px;letter-spacing:1px}.stat strong{display:block;font-size:21px;margin:5px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.panel h2{font-size:18px;margin:4px 0}.sub{font-size:12px;color:var(--muted);margin:7px 0 20px}label{display:block;margin:16px 0 8px;font-size:12px;color:#c7d2e2}.phone{display:flex;gap:8px}.phone span,input[type=tel]{border:1px solid #2a394e;border-radius:9px;background:#0b1321;color:var(--text);padding:12px}.phone span{white-space:nowrap}.phone input{width:100%;min-width:0}.hint{display:block;font-size:10px;color:#7d8da4;margin-top:6px}.presets{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.preset{padding:10px 4px;border:1px solid #2a394e;border-radius:9px;background:#0b1321;color:#d6e1ef;font-weight:800}.preset small{display:block;color:#7d8da4;font-size:9px;font-weight:400}.preset.active{border-color:var(--mint);background:#102b27;color:var(--mint)}.consent{display:flex;align-items:flex-start;gap:8px;color:#9eacc0;font-size:11px;line-height:1.5}.consent input{accent-color:var(--mint);margin-top:3px}.primary,.secondary{width:100%;padding:13px;border-radius:9px;font-weight:800;margin-top:14px;cursor:pointer}.primary{border:0;background:var(--mint);color:#071a14}.secondary{border:1px solid #34445a;background:#141e2e;color:#b9c7da}.msg{margin-top:12px;padding:10px;border:1px solid #253449;border-radius:9px;color:#9eafc5;font-size:11px;overflow-wrap:anywhere}.msg.error{color:#ffb5bd;border-color:#65303b}.empty{min-height:230px;display:grid;place-content:center;text-align:center;color:#8292a9;font-size:12px}.empty b{color:#c2ccda;margin-bottom:6px}.list{max-height:300px;overflow:auto;display:grid;grid-template-columns:1fr 1fr;gap:7px}.otp{display:flex;justify-content:space-between;gap:5px;padding:9px;border:1px solid #26354a;border-radius:8px;background:#0b1321}.otp b{color:var(--mint);letter-spacing:2px}.otp span{font-size:8px;color:#7d8da4}.activity{margin-top:16px}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;white-space:nowrap;text-align:left}th,td{padding:12px;border-bottom:1px solid #233044;font-size:11px}th{color:#8292a9;font-size:9px;letter-spacing:1px}.muted{color:#8292a9;text-align:center}footer{color:#66778e;font-size:9px;letter-spacing:1px;padding:20px 0}@media(max-width:760px){.stats{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.shell{padding:18px 12px}.stat{padding:14px}.top{align-items:flex-start}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="top">
+  <div class="brand"><div class="logo">LL</div><div><div class="eyebrow">LEMONLEEK / LAB</div><h1>SMS Testing Dashboard</h1></div></div>
+  <div class="pill">DEMO MODE</div>
+</header>
+<div class="notice"><b>Simulation mode active.</b> Yeh GitHub Pages compatible, browser-only demo hai. OTPs sirf is page par dikhte hain — real SMS send nahi hota.</div>
+<section class="stats">
+  <div class="stat"><span>SMS PROVIDER</span><strong>Disabled</strong><span>Outbound messaging off</span></div>
+  <div class="stat"><span>BATCH PRESETS</span><strong>6 options</strong><span>5 / 10 / 15 / 25 / 50 / 100</span></div>
+  <div class="stat"><span>RUN MODE</span><strong>Browser only</strong><span>No backend required</span></div>
+</section>
+<div class="grid">
+<section class="panel">
+  <div class="eyebrow">OTP WORKFLOW</div><h2>OTP Simulator</h2><p class="sub">Apne test number ke liye demo codes locally generate karein.</p>
+  <form id="form">
+    <label for="phone">Pakistan mobile number</label>
+    <div class="phone"><span>🇵🇰 +92</span><input id="phone" type="tel" inputmode="tel" placeholder="3233757437" required></div>
+    <small class="hint">Misal: 3233757437 ya +923233757437</small>
+    <label>OTP batch selection</label>
+    <div class="presets">
+      <button class="preset active" type="button" data-count="5">5<small>codes</small></button>
+      <button class="preset" type="button" data-count="10">10<small>codes</small></button>
+      <button class="preset" type="button" data-count="15">15<small>codes</small></button>
+      <button class="preset" type="button" data-count="25">25<small>codes</small></button>
+      <button class="preset" type="button" data-count="50">50<small>codes</small></button>
+      <button class="preset" type="button" data-count="100">100<small>codes</small></button>
+    </div>
+    <label class="consent"><input id="consent" type="checkbox" required><span>Yeh mera test number hai ya mere paas number owner ki ijazat hai.</span></label>
+    <button class="primary" type="submit">Generate demo OTPs ↗</button>
+  </form>
+  <div class="msg" id="message" role="status" aria-live="polite">Ready — abhi koi SMS send nahi hua.</div>
+</section>
+<section class="panel">
+  <div class="eyebrow">GENERATED OUTPUT</div><h2>OTP Results <span id="resultCount" style="color:var(--mint)">0</span></h2>
+  <p class="sub">Demo codes yahan show honge. Yeh real OTP messages nahi hain.</p>
+  <div class="empty" id="empty"><b>No results yet</b><span>Simulator run karne ke baad codes yahan nazar aayenge.</span></div>
+  <div class="list" id="results"></div>
+  <button class="secondary" id="copy" type="button" disabled>Copy results</button>
+</section>
+</div>
+<section class="panel activity">
+  <div class="eyebrow">SESSION HISTORY</div><h2>Activity logs</h2><p class="sub">Is browser session mein kiye gaye demo runs.</p>
+  <div class="tablewrap"><table><thead><tr><th>TIME</th><th>DESTINATION</th><th>COUNT</th><th>MODE</th><th>STATUS</th></tr></thead><tbody id="events"><tr><td colspan="5" class="muted">Abhi koi activity nahi hai.</td></tr></tbody></table></div>
+</section>
+<footer>LEMONLEEK SMS LAB · GITHUB PAGES EDITION · LOCAL SIMULATION ONLY</footer>
+</div>
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+let selectedCount = 5;
+let currentCodes = [];
+const historyRows = [];
+document.querySelectorAll(".preset").forEach(button => button.addEventListener("click", () => {
+  document.querySelectorAll(".preset").forEach(b => b.classList.remove("active"));
+  button.classList.add("active");
+  selectedCount = Number(button.dataset.count);
+}));
+function normalizePhone(raw) {
+  const value = raw.trim().replace(/[\\s()-]/g, "");
+  if (/^03\\d{9}$/.test(value)) return "+92" + value.slice(1);
+  if (/^923\\d{9}$/.test(value)) return "+" + value;
+  return value;
+}
+function makeCode() { return String(Math.floor(Math.random() * 1000000)).padStart(6, "0"); }
+function showMessage(text, error=false) {
+  $("message").textContent = text;
+  $("message").classList.toggle("error", error);
+}
+function renderCodes(codes) {
+  $("results").replaceChildren();
+  $("empty").hidden = codes.length > 0;
+  $("resultCount").textContent = codes.length;
+  codes.forEach(code => {
+    const row = document.createElement("div"); row.className = "otp";
+    const b = document.createElement("b"); b.textContent = code;
+    const s = document.createElement("span"); s.textContent = "DEMO ONLY";
+    row.append(b,s); $("results").append(row);
+  });
+  $("copy").disabled = !codes.length;
+}
+function renderHistory() {
+  const body = $("events"); body.replaceChildren();
+  if (!historyRows.length) {
+    const tr=document.createElement("tr"), td=document.createElement("td");
+    td.colSpan=5; td.className="muted"; td.textContent="Abhi koi activity nahi hai.";
+    tr.append(td); body.append(tr); return;
+  }
+  historyRows.forEach(item => {
+    const tr=document.createElement("tr");
+    [item.time,item.phone,item.count,"SIMULATION","COMPLETED"].forEach(value => {
+      const td=document.createElement("td"); td.textContent=value; tr.append(td);
+    });
+    body.append(tr);
+  });
+}
+$("form").addEventListener("submit", event => {
+  event.preventDefault();
+  const phone = normalizePhone($("phone").value);
+  if (!/^\\+923\\d{9}$/.test(phone)) {
+    showMessage("Valid Pakistan mobile number dein, misal: +923233757437.", true); return;
+  }
+  if (!$("consent").checked) {
+    showMessage("Pehle number ownership ya permission confirm karein.", true); return;
+  }
+  currentCodes = Array.from({length:selectedCount}, makeCode);
+  renderCodes(currentCodes);
+  const masked = phone.replace(/^(\\+92\\d{2})\\d{5}(\\d{2})$/, "$1•••••$2");
+  historyRows.unshift({time:new Date().toLocaleString(),phone:masked,count:selectedCount});
+  if (historyRows.length>25) historyRows.pop();
+  renderHistory();
+  showMessage(`${selectedCount} demo OTP codes generate ho gaye. Koi real SMS send nahi hua.`);
+});
+$("copy").addEventListener("click", async () => {
+  try { await navigator.clipboard.writeText(currentCodes.join("\\n")); showMessage(`${currentCodes.length} demo codes copy ho gaye.`); }
+  catch { showMessage("Clipboard access nahi mili. Codes manually select karein.", true); }
+});
+</script>
+</body>
+</html>
